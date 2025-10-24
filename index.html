@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rodrigues Eletricista | Instalação e Manutenção Elétrica</title>
+  <meta name="description" content="Eletricista em Franca e região. Instalações, manutenções, iluminação LED, quadros e mais." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#0A2E6E;
+      --blue-900:#081F4A;
+      --blue-700:#123B8A;
+      --yellow:#FFC107;
+      --bg:#0c1222;
+      --card:#0f1730cc;
+      --txt:#e9eefb;
+      --muted:#b9c3da;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --radius:18px;
+      --radius-lg:26px;
+      --speed:.35s;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      color:var(--txt);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, #123b8a55, transparent 60%),
+        radial-gradient(800px 500px at -10% 20%, #ffc10722, transparent 60%),
+        linear-gradient(180deg, #0a1431, #090f25 30%, #0b1229);
+      background-attachment: fixed;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background:linear-gradient(180deg, #0b1330dd, #0b1330aa);
+      border-bottom:1px solid #ffffff1a;
+    }
+    .nav-inner{
+      max-width:1200px; margin:auto; padding:14px 20px;
+      display:flex; align-items:center; gap:18px; justify-content:space-between;
+    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt)}
+    .brand img{height:42px;width:auto}
+    .brand h1{font: 800 2rem/1 Montserrat, Inter, sans-serif;
+  letter-spacing: .8px;
+  margin: 0;}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{
+      color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem;
+      padding:10px 12px; border-radius:10px; transition:color var(--speed), background var(--speed), transform var(--speed);
+    }
+    .menu a:hover{color:#fff; background:#ffffff12; transform: translateY(-1px)}
+    .cta{
+      background:var(--yellow); color:#1a1a1a; font-weight:800; border-radius:12px;
+      padding:10px 16px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      box-shadow:var(--shadow); transition: transform var(--speed), box-shadow var(--speed);
+    }
+    .cta:hover{transform:translateY(-2px); box-shadow:0 14px 40px #ffc10755}
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden;
+      padding:80px 20px 40px;
+      background:
+        radial-gradient(1000px 600px at 10% -10%, #0a2e6e66, transparent 60%),
+        radial-gradient(900px 420px at 110% 10%, #ffc1071a, transparent 60%);
+      border-bottom:1px solid #ffffff1a;
+    }
+    .hero-inner{
+      max-width:1200px; margin:auto; display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center
+    }
+    .kicker{color:var(--yellow); font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:.85rem}
+    .title{font:800 2.6rem/1.12 Montserrat,Inter,sans-serif; margin:.4rem 0 1rem}
+    .subtitle{color:var(--muted); font-size:1.08rem; margin:0 0 1.2rem}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 24px}
+    .badge{
+      background:#ffffff12; border:1px solid #ffffff1a; color:#eaf0ff;
+      padding:8px 12px; border-radius:999px; font-weight:600; font-size:.9rem
+    }
+    .hero-card{
+      background:linear-gradient(180deg, #0f1730cc, #0c1530aa);
+      border:1px solid #ffffff1a; border-radius:var(--radius-lg);
+      padding:22px; box-shadow:var(--shadow)
+    }
+    .hero-card h3{margin:0 0 10px; font:800 1.1rem/1.1 Montserrat}
+    .contact-line{display:flex; align-items:center; justify-content:space-between; gap:12px; background:#ffffff0f; border-radius:14px; padding:14px 16px; border:1px dashed #ffffff2a}
+    .phone{font-weight:800; letter-spacing:.5px}
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+
+    /* SECTIONS */
+    section{padding:70px 20px}
+    .wrap{max-width:1200px;margin:auto}
+    .sec-title{font:800 1.9rem/1.15 Montserrat;margin:0 0 10px}
+    .sec-sub{color:var(--muted); margin:0 0 28px}
+
+    /* SERVICES */
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{
+      background:var(--card); border:1px solid #ffffff1a; border-radius:var(--radius);
+      padding:20px; box-shadow:var(--shadow); transition: transform var(--speed), border-color var(--speed)
+    }
+    .card:hover{transform:translateY(-4px); border-color:#ffffff33}
+    .card h4{margin:12px 0 6px; font:800 1.05rem/1.2 Montserrat}
+    .card p{color:var(--muted); margin:0}
+    .icon{
+      width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#ffffff12;border:1px solid #ffffff1a
+    }
+
+    /* FEATURES STRIP */
+    .strip{
+      display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:22px
+    }
+    .pill{
+      display:flex; gap:10px; align-items:center; background:#ffffff10; border:1px solid #ffffff1a; border-radius:999px; padding:10px 14px; font-weight:700
+    }
+
+    /* DEPOIMENTOS */
+    .quote{display:grid; grid-template-columns:.1fr 1fr; gap:16px; align-items:start}
+    .bubble{background:#ffffff10;border:1px solid #ffffff1a;border-radius:16px;padding:16px}
+    .stars{letter-spacing:2px}
+
+    /* GALERIA */
+    .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    .gallery img{
+      width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:14px; border:1px solid #ffffff1a; transition: transform var(--speed), box-shadow var(--speed)
+    }
+    .gallery img:hover{transform:scale(1.02); box-shadow:0 12px 30px #00000040}
+
+    /* CONTATO */
+    .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:24px}
+    form{
+      background:#ffffff0f; border:1px solid #ffffff1a; border-radius:var(--radius);
+      padding:18px; display:grid; gap:12px
+    }
+    label{font-weight:700}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px;
+      border:1px solid #ffffff22; background:#0c1433; color:#fff
+    }
+    textarea{min-height:120px; resize:vertical}
+    button[type=submit]{
+      background:var(--yellow); color:#111; border:0; padding:12px 16px; border-radius:12px; font-weight:900; cursor:pointer
+    }
+    .contact-card{
+      background:var(--card); border:1px solid #ffffff1a; border-radius:var(--radius);
+      padding:20px; display:grid; gap:14px; box-shadow:var(--shadow)
+    }
+    .contact-row{display:flex; gap:12px; align-items:center}
+    .contact-row a{color:#fff; text-decoration:none; font-weight:800}
+    .map{
+      width:100%; height:220px; border:1px solid #ffffff1a; border-radius:14px; background:#0c1433;
+      display:grid; place-items:center; color:#7f8db3
+    }
+
+    /* FOOTER */
+    footer{padding:28px 20px; border-top:1px solid #ffffff1a; color:#aab7e6; text-align:center}
+
+    /* FLOAT WA */
+    .float-wa{
+      position:fixed; bottom:18px; right:18px; z-index:60;
+      background:#25D366; color:#082; font-weight:900; padding:14px 16px; border-radius:999px;
+      display:flex; gap:10px; align-items:center; text-decoration:none; box-shadow:var(--shadow);
+      transition: transform var(--speed)
+    }
+    .float-wa:hover{transform: translateY(-2px)}
+
+    /* RESPONSIVO */
+    @media (max-width:1000px){
+      .hero-inner{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .strip{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .menu{display:none}
+      .title{font-size:2.1rem}
+      .gallery{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+
+    /* Animação */
+    [data-anim]{opacity:0; transform: translateY(14px); transition:.6s ease}
+    [data-anim].in{opacity:1; transform:none}
+  </style>
+</head>
+
+<body>
+  <!-- Navegação -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Voltar ao topo">
+        <h1>Rodrigues Eletricista</h1>
+      </a>
+      <div class="menu" role="navigation" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="top" class="hero">
+    <div class="hero-inner">
+      <!-- COLUNA ESQUERDA -->
+      <div>
+        <div class="kicker">Eletricista de confiança</div>
+        <h2 class="title" data-anim>Instalações e Manutenções Elétricas com <span style="color:var(--yellow)">Segurança</span> e <span style="color:var(--yellow)">Qualidade</span></h2>
+        <p class="subtitle" data-anim>Residencial • Comercial • Iluminação LED • Quadros e disjuntores • Reformas</p>
+        <div class="badges" data-anim>
+          <span class="badge">Orçamento rápido</span>
+          <span class="badge">Normas técnicas</span>
+          <span class="badge">Atendimento pontual</span>
+        </div>
+        <div class="hero-cta" data-anim>
+          <a class="cta" href="#contato">Solicitar orçamento</a>
+        </div>
+      </div><!-- ✅ fecha a coluna esquerda corretamente -->
+
+      <!-- COLUNA DIREITA -->
+      <aside class="hero-card" aria-label="Contato rápido">
+        <h3>Fale direto comigo</h3>
+        <div class="contact-line">
+          <div class="phone">📞 (16) 99330-7522</div>
+        </div>
+        <p style="color:var(--muted); margin:10px 0 0">Atendo Franca e região.</p>
+      </aside>
+    </div>
+  </header>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="wrap">
+      <h3 class="sec-title">Serviços</h3>
+      <p class="sec-sub">Tudo o que você precisa para uma instalação segura e eficiente.</p>
+
+      <div class="grid grid-3">
+        <article class="card" data-anim><div class="icon">🔌</div><h4>Instalações residenciais e comerciais</h4><p>Projetos completos, ampliações e pontos adicionais com acabamento limpo.</p></article>
+        <article class="card" data-anim><div class="icon">🛠️</div><h4>Manutenção preventiva e corretiva</h4><p>Diagnóstico rápido, correção de falhas e atualização de componentes.</p></article>
+        <article class="card" data-anim><div class="icon">💡</div><h4>Iluminação LED e automação simples</h4><p>Projetos de iluminação econômica e automações de conforto.</p></article>
+        <article class="card" data-anim><div class="icon">🧰</div><h4>Troca de disjuntores e tomadas</h4><p>Substituição segura, correção de aquecimento e curtos.</p></article>
+        <article class="card" data-anim><div class="icon">🚿</div><h4>Instalação de chuveiros e luminárias</h4><p>Instalação correta, fiação adequada e aterramento.</p></article>
+        <article class="card" data-anim><div class="icon">📦</div><h4>Quadros elétricos</h4><p>Montagem, organização e identificação para segurança e manutenção.</p></article>
+      </div>
+
+      <div class="strip">
+        <div class="pill">⚡ Profissional qualificado</div>
+        <div class="pill">🕒 Pontualidade</div>
+        <div class="pill">🔒 Segurança em primeiro lugar</div>
+        <div class="pill">💬 Suporte pelo WhatsApp</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="wrap">
+      <h3 class="sec-title">Sobre mim</h3>
+      <p class="sec-sub">Sou <strong>Denis Rodrigues</strong>, eletricista com experiência em projetos residenciais. Meu foco é entregar
+        <strong>segurança, transparência</strong> e <strong>excelência</strong> em cada serviço.</p>
+
+      <div class="quote" data-anim>
+        <div style="font-size:2rem">“</div>
+        <div class="bubble">
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <p>“Trabalho com dedicação e atenção aos detalhes. Cada instalação é feita seguindo normas técnicas e com materiais de qualidade.”</p>
+          <p style="color:var(--muted); margin:0">— Denis Rodrigues</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria">
+    <div class="wrap">
+      <h3 class="sec-title">Galeria</h3>
+      <p class="sec-sub">Alguns trabalhos.</p>
+      <div class="gallery" data-anim>
+        <img src="https://images.unsplash.com/photo-1518644730709-0835105d9daa?q=80&w=1200" alt="Painel elétrico organizado">
+        <img src="https://images.unsplash.com/photo-1581093649225-71a6b3a98f05?q=80&w=1200" alt="Instalação elétrica em conduítes">
+        <img src="https://images.unsplash.com/photo-1581093588401-16d2a76a5cf0?q=80&w=1200" alt="Iluminação LED">
+        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1200" alt="Trabalho com ferramentas">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato">
+    <div class="wrap contact">
+      <div>
+        <h3 class="sec-title">Solicite um orçamento</h3>
+        <p class="sec-sub">Respondo rápido pelo WhatsApp. Se preferir, envie pelo formulário.</p>
+
+        <form name="contato" onsubmit="event.preventDefault(); window.open('https://wa.me/5516993307522?text=' + encodeURIComponent(msgWa()), '_blank');">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" placeholder="Seu nome" required>
+
+          <label for="fone">Telefone</label>
+          <input id="fone" name="fone" placeholder="(16) 9xxxx-xxxx">
+
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Descreva o serviço que precisa"></textarea>
+
+          <!-- ✅ botão que faltava -->
+          <button type="submit">Enviar pelo WhatsApp</button>
+        </form>
+      </div>
+
+      <aside class="contact-card" aria-label="Canais de atendimento">
+        <div class="contact-row">📞 <a href="tel:+5516993307522">(16) 99330-7522</a></div>
+        <div class="contact-row">✉️ <a href="mailto:denisrodrigueseletricista@hotmail.com">denisrodrigueseletricista@hotmail.com</a></div>
+        <div class="map">Mapa/Região de atendimento</div>
+        <small style="color:var(--muted)">Atendo Franca e região.</small>
+      </aside>
+    </div>
+  </section>
+
+  <footer>© <span id="yr"></span> Rodrigues Eletricista — Todos os direitos reservados</footer>
+
+  <!-- Botão flutuante WhatsApp -->
+  <a class="float-wa" href="https://wa.me/5516993307522" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">💬 WhatsApp</a>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Electrician",
+    "name":"Rodrigues Eletricista",
+    "areaServed":"Franca, SP",
+    "telephone":"+55 16 99330-7522",
+    "url":"https://example.com",
+    "image":"logo.png",
+    "contactPoint":{
+      "@type":"ContactPoint",
+      "telephone":"+55 16 99330-7522",
+      "contactType":"customer service",
+      "areaServed":"BR"
+    }
+  }
+  </script>
+
+  <!-- JS -->
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // animação ao rolar
+    const els = [...document.querySelectorAll('[data-anim]')];
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, {threshold:.1});
+    els.forEach(el=>io.observe(el));
+
+    // mensagem formatada para WhatsApp
+    function msgWa(){
+      const nome = (document.getElementById('nome').value||'').trim();
+      const fone = (document.getElementById('fone').value||'').trim();
+      const msg  = (document.getElementById('mensagem').value||'').trim();
+      return `Olá, sou ${nome}. Telefone: ${fone}. Preciso de ajuda com: ${msg}`;
+    }
+  </script>
+</body>
+</html>
