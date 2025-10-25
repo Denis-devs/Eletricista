@@ -47,11 +47,28 @@
       max-width:1200px; margin:auto; padding:14px 20px;
       display:flex; align-items:center; gap:18px; justify-content:space-between;
     }
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt)}
-    .brand img{height:42px;width:auto}
-    .brand h1{font: 800 2rem/1 Montserrat, Inter, sans-serif;
-  letter-spacing: .8px;
-  margin: 0;}
+
+    /* ======== CORREÇÃO AQUI ======== */
+    .brand{display:flex;align-items:center;text-decoration:none;color:var(--txt)}
+    .brand-logo{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+    .brand-logo img{
+      height:42px;
+      width:auto;
+    }
+    .brand-logo h1{
+      font:800 2rem/1 Montserrat,Inter,sans-serif;
+      letter-spacing:.8px;
+      margin:0;
+      display:flex;
+      align-items:center;
+    }
+    /* ================================ */
+
     .menu{display:flex;gap:18px;align-items:center}
     .menu a{
       color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem;
@@ -199,7 +216,11 @@
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="#top" aria-label="Voltar ao topo">
-        <h1>Rodrigues Eletricista</h1>
+        <div class="brand-logo">
+          <img src="logo1.png" alt="Raio">
+          <h1>Rodrigues Eletricista</h1>
+          <img src="logo2.png" alt="Plug">
+        </div>
       </a>
       <div class="menu" role="navigation" aria-label="Principal">
         <a href="#servicos">Serviços</a>
@@ -213,7 +234,6 @@
   <!-- Hero -->
   <header id="top" class="hero">
     <div class="hero-inner">
-      <!-- COLUNA ESQUERDA -->
       <div>
         <div class="kicker">Eletricista de confiança</div>
         <h2 class="title" data-anim>Instalações e Manutenções Elétricas com <span style="color:var(--yellow)">Segurança</span> e <span style="color:var(--yellow)">Qualidade</span></h2>
@@ -226,9 +246,7 @@
         <div class="hero-cta" data-anim>
           <a class="cta" href="#contato">Solicitar orçamento</a>
         </div>
-      </div><!-- ✅ fecha a coluna esquerda corretamente -->
-
-      <!-- COLUNA DIREITA -->
+      </div>
       <aside class="hero-card" aria-label="Contato rápido">
         <h3>Fale direto comigo</h3>
         <div class="contact-line">
@@ -250,7 +268,7 @@
         <article class="card" data-anim><div class="icon">🛠️</div><h4>Manutenção preventiva e corretiva</h4><p>Diagnóstico rápido, correção de falhas e atualização de componentes.</p></article>
         <article class="card" data-anim><div class="icon">💡</div><h4>Iluminação LED e automação simples</h4><p>Projetos de iluminação econômica e automações de conforto.</p></article>
         <article class="card" data-anim><div class="icon">🧰</div><h4>Troca de disjuntores e tomadas</h4><p>Substituição segura, correção de aquecimento e curtos.</p></article>
-        <article class="card" data-anim><div class="icon">🚿</div><h4>Instalação de chuveiros e luminárias</h4><p>Instalação correta, fiação adequada e aterramento.</p></article>
+        <article class="card" data-anim><div class="icon">🚿</div><h4>Instalação cameras de segurança</h4><p>Instalação correta, fiação adequada.</p></article>
         <article class="card" data-anim><div class="icon">📦</div><h4>Quadros elétricos</h4><p>Montagem, organização e identificação para segurança e manutenção.</p></article>
       </div>
 
@@ -312,7 +330,6 @@
           <label for="mensagem">Mensagem</label>
           <textarea id="mensagem" name="mensagem" placeholder="Descreva o serviço que precisa"></textarea>
 
-          <!-- ✅ botão que faltava -->
           <button type="submit">Enviar pelo WhatsApp</button>
         </form>
       </div>
@@ -328,10 +345,8 @@
 
   <footer>© <span id="yr"></span> Rodrigues Eletricista — Todos os direitos reservados</footer>
 
-  <!-- Botão flutuante WhatsApp -->
   <a class="float-wa" href="https://wa.me/5516993307522" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">💬 WhatsApp</a>
 
-  <!-- JSON-LD LocalBusiness -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -350,18 +365,20 @@
   }
   </script>
 
-  <!-- JS -->
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // animação ao rolar
     const els = [...document.querySelectorAll('[data-anim]')];
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
     }, {threshold:.1});
     els.forEach(el=>io.observe(el));
 
-    // mensagem formatada para WhatsApp
     function msgWa(){
       const nome = (document.getElementById('nome').value||'').trim();
       const fone = (document.getElementById('fone').value||'').trim();
